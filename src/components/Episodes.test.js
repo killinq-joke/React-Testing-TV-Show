@@ -27,17 +27,22 @@ describe("Episodes", () => {
   it("renders", () => {
     const episode = wrapper.queryByText(/episode/i);
     expect(episode).toBeInTheDocument();
+    expect(episode).toBeVisible();
   });
   it("renders the info", () => {
     const season1 = wrapper.queryByText(/season 1/i);
     expect(season1).toBeInTheDocument();
+    expect(season1).toBeVisible();
     const episode1 = wrapper.queryByText(/episode 1/i);
     expect(episode1).toBeInTheDocument();
+    expect(episode1).toBeVisible();
     const name = wrapper.queryByText(/chapter one: the vanishing of will byers/i)
     expect(name).toBeInTheDocument();
+    expect(name).toBeVisible();
     const notName = wrapper.queryByText(/chapter two: the vanishing of will byers/i)
     expect(notName).not.toBeInTheDocument();
     const summary = wrapper.queryByText(/A young boy mysteriously disappears, and his panicked mother demands that the police find him. Meanwhile, the boy's friends conduct their own search, and meet a mysterious girl in the forest./i)
     expect(summary).toBeInTheDocument();
+    expect(summary).toBeVisible();
   })
 });

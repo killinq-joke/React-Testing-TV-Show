@@ -9,7 +9,7 @@ jest.mock("axios", () => {
         data: {
           id: NaN,
           url: "",
-          name: "",
+          name: "Oblipo",
           type: "",
           language: "",
           genres: [],
@@ -24,7 +24,7 @@ jest.mock("axios", () => {
           webChannel: {},
           externals: {},
           image: {},
-          summary: "",
+          summary: "<p>the cup of bromman is reallly bigggg</p>",
           updated: NaN,
           links: {},
           _embedded: {episodes:[{season: 1}, {season: 1}, {season: 2}, {season: 2}]}
@@ -41,13 +41,18 @@ jest.mock("axios", () => {
       wrapper = rtl.render(<App />);
     });
 
-    // it("spinner renders", () => {
-    //     const spinner = wrapper.queryByText(/fetching data.../i)
-    //     expect(spinner).toBeInTheDocument();
-    // })
-    // });
-  it("displays the dropdown menu", async () => {
-    const dropdown = await wrapper.getByText(/select a season/i);
+  it("displays the dropdown menu",  () => {
+    const dropdown = wrapper.getByText(/select a season/i);
     expect(dropdown).toBeInTheDocument();
+    expect(dropdown).toBeVisible();
+    
   });
+  it("displays the info", () => {
+      const title = wrapper.queryByText(/oblipo/i)
+      expect(title).toBeInTheDocument();
+      expect(title).toBeVisible();
+      const summary = wrapper.queryByText(/the cup of bromman is reallly bigggg/i)
+      expect(summary).toBeInTheDocument();
+      expect(summary).toBeVisible();
+  })
 });
